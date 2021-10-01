@@ -1,5 +1,5 @@
-import bcrypt from 'bcrypt';
-import client from '../client';
+import bcrypt from "bcrypt";
+import client from "../../client";
 
 export default {
 	Mutation: {
@@ -22,7 +22,7 @@ export default {
 				});
 				//console.log(existingUser);
 				if (existingUser) {
-					throw new Error('This username/password si already taken.');
+					throw new Error("This username/password si already taken.");
 				}
 				// hash password
 				const uglyPassword = await bcrypt.hash(password, 10);
@@ -43,7 +43,7 @@ export default {
 					const ok = true;
 					return { ok };
 				} else {
-					throw new Error('Creat Accout failure.');
+					throw new Error("Creat Accout failure.");
 				}
 				// save and return the user
 			} catch (e) {

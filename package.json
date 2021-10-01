@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"description": "Instaclone Backend.",
 	"scripts": {
-		"dev": "nodemon --exec babel-node server",
+		"dev": "nodemon --exec babel-node server --delay 2",
 		"migrate": "npx prisma migrate dev",
 		"studio": "npx prisma studio"
 	},
@@ -25,8 +25,12 @@
 		"@graphql-tools/schema": "^7.1.5",
 		"@prisma/client": "^3.1.1",
 		"apollo-server": "^2.25.2",
+		"apollo-server-express": "^2.25.2",
 		"bcrypt": "^5.0.1",
-		"dotenv": "^10.0.0"
+		"dotenv": "^10.0.0",
+		"express": "^4.17.1",
+		"jsonwebtoken": "^8.5.1",
+		"morgan": "^1.10.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.15.5",
