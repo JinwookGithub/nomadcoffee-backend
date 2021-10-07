@@ -7,14 +7,15 @@ import { getUser } from "./users/users.utils";
 
 const PORT = process.env.PORT;
 const apollo = new ApolloServer({
-	resolvers,
-	typeDefs,
-	context: async ({ req }) => {
-		//console.log(req.headers.token);
-		return {
-			loggedInUser: await getUser(req.headers.token),
-		};
-	},
+  resolvers,
+  typeDefs,
+  playground: true,
+  context: async ({ req }) => {
+    //console.log(req.headers.token);
+    return {
+      loggedInUser: await getUser(req.headers.token),
+    };
+  },
 });
 
 const app = express();
@@ -24,5 +25,5 @@ apollo.applyMiddleware({ app });
 
 // express style
 app.listen({ port: PORT }, () => {
-	console.log(`🚀Server is running on http://localhost:${PORT} ✅`);
+  console.log(`🚀Server is running on http://localhost:${PORT} ✅`);
 });
