@@ -2,16 +2,12 @@ import client from "../../client";
 
 export default {
   Query: {
-    seeUser: async ({ id }, { username, lastId }, { loggedInUser }) => {
-      const ok = await client.user.findUnique({
+    seeUser: async (_, { username, lastId }, { loggedInUser }) => {
+      const { id } = await client.user.findUnique({
         where: { username },
-        include: {
-          following: true,
-          followers: true,
-        },
         select: { id: true },
       });
-      if (!ok) {
+      if (!id) {
         return {
           ok: false,
           error: "User not found",
@@ -62,6 +58,10 @@ export default {
         ok: true,
         following,
         followers,
+        totalFollowing,
+        totalFollowers,
+        isMe,
+        isFollowing,
       };
     },
   },
